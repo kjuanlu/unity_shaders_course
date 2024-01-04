@@ -1,9 +1,12 @@
-Shader "Unlit/1.UnlitShader"
+Shader "00_Custom/00_shader"
 {
     Properties{ }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+
+        Cull Off
+
         Pass
         {
             CGPROGRAM
@@ -23,8 +26,7 @@ Shader "Unlit/1.UnlitShader"
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                //o.vertex = v.vertex;
+                o.vertex = v.vertex;
                 return o;
             }
            
