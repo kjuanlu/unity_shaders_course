@@ -1,0 +1,64 @@
+# *****************************************************************************************
+# Unnecessary files 
+# *****************************************************************************************
+
+Thumbs.db
+build.xml
+sysinfo.txt
+build_info.txt
+build_info.txt.meta
+
+# *****************************************************************************************
+# Unnecessary folders 
+# *****************************************************************************************
+
+/ExportedObj/
+/Library/
+/obj/
+/Temp/
+/xcode
+/bin
+/AssetBundles
+/.vscode
+/UserSettings
+/Logs
+
+# *****************************************************************************************
+# Patterns
+# *****************************************************************************************
+
+# Ignore any database created by Visual Studio
+*.sdf
+*.suo
+*.opensdf
+*.sln
+*.csproj
+*.userprefs
+*.pidb
+*.o
+*.lo
+*.la
+*.al
+.libs
+#*.so
+#*.so.[0-9]*
+#*.a
+*.pyc
+*.pyo
+*.rej
+*.rej.meta
+*~
+#*#
+.#*
+.*.swp
+.DS_Store
+*.unityproj
+.vsconfig
+
+*.db
+Log_*
+.vs/
+Assembly-CSharp.csproj.user
+
+
+
