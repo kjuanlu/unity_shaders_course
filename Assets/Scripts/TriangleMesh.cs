@@ -37,6 +37,12 @@ public class TriangleMesh : MonoBehaviour
 
         };
 
+        mesh.colors = new Color[] {
+            new Color(1.0f, 0.0f, 0.0f),  //0
+            new Color(0.0f, 1.0f, 0.0f),   //1
+            new Color(0.0f, 0.0f, 1.0f)     //2
+        };
+
         mesh.triangles = new int[] { 0, 1, 2 };
         meshFilter.mesh = mesh;
 
