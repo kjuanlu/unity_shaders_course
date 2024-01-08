@@ -12,7 +12,11 @@ public class TriangleMesh : MonoBehaviour
     private Mesh mesh;
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
+    private Material _material;
 
+    public CameraViewProjection camera_matrix;
+
+    private Matrix4x4 _modelMatrix;
 
     private void Start()
     {
@@ -48,7 +52,20 @@ public class TriangleMesh : MonoBehaviour
 
         meshRenderer.sharedMaterial = material;
 
+        _material = meshRenderer.material;
     }
 
-    
+    private void Update()
+    {
+        UpdateModelMatrix();
+        _material.SetMatrix("_Model", _modelMatrix);
+        _material.SetMatrix("_View", camera_matrix.view);
+        _material.SetMatrix("_Projection", camera_matrix.projection);
+       
+    }
+
+    void UpdateModelMatrix()
+    {
+        _modelMatrix =  Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
+    }
 }

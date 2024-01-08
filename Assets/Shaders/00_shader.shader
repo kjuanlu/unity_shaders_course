@@ -13,6 +13,10 @@ Shader "00_Custom/00_shader"
             #pragma vertex vert
             #pragma fragment frag
             #include "UnityCG.cginc"
+
+            float4x4 _Model;
+            float4x4 _View;
+            float4x4 _Projection;
            
             struct appdata
             {
@@ -28,7 +32,31 @@ Shader "00_Custom/00_shader"
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = v.vertex;
+
+                // [Model Coordinates]      -> v.vertex
+                    //mul (Model Matrix)   
+                // [World Position]          -> worldPos
+                    //mul (View Matrix)
+                // [Camera Coordinates]      -> viewPos
+                    //mul (Projection Matrix)
+                // [Clip coordinates] (Homogeneous Coordinates)
+
+                float4 worldPos = mul(_Model, v.vertex);
+                float4 viewPos = mul(_View,worldPos);
+                float4 clipPos = mul(_Projection, viewPos);
+
+                //float4 worldPos = mul(_Model, v.vertex);
+                //float4 viewPos = mul(_View,worldPos);
+                //float4 clipPos = mul(_Projection, viewPos);
+                
+                //float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
+                //float4 viewPos = mul(UNITY_MATRIX_V,worldPos);
+                //float4 clipPos = mul(UNITY_MATRIX_P, viewPos);
+
+                //float4 clipPos = UnityObjectToClipPos(v.vertex); // -> float4 clipPos = mul(UNITY_MATRIX_MVP, v.vertex)
+
+                //o.vertex = v.vertex;
+                o.vertex = clipPos;
                 o.color = v.color;
                 return o;
             }
