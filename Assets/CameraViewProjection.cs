@@ -30,7 +30,7 @@ public class CameraViewProjection : MonoBehaviour
     void UpdateViewMatrix()
     {
         view = _camera.worldToCameraMatrix;
-        //view = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale).inverse;
+        
 
     }
 }

@@ -41,9 +41,9 @@ Shader "00_Custom/00_shader"
                     //mul (Projection Matrix)
                 // [Clip coordinates] (Homogeneous Coordinates)
 
-                float4 worldPos = mul(_Model, v.vertex);
-                float4 viewPos = mul(_View,worldPos);
-                float4 clipPos = mul(_Projection, viewPos);
+                //float4 worldPos = mul(_Model, v.vertex);
+                //float4 viewPos = mul(_View,worldPos);
+                //float4 clipPos = mul(_Projection, viewPos);
 
                 //float4 worldPos = mul(_Model, v.vertex);
                 //float4 viewPos = mul(_View,worldPos);
@@ -53,7 +53,7 @@ Shader "00_Custom/00_shader"
                 //float4 viewPos = mul(UNITY_MATRIX_V,worldPos);
                 //float4 clipPos = mul(UNITY_MATRIX_P, viewPos);
 
-                //float4 clipPos = UnityObjectToClipPos(v.vertex); // -> float4 clipPos = mul(UNITY_MATRIX_MVP, v.vertex)
+                float4 clipPos = UnityObjectToClipPos(v.vertex); // -> float4 clipPos = mul(UNITY_MATRIX_MVP, v.vertex)
 
                 //o.vertex = v.vertex;
                 o.vertex = clipPos;
